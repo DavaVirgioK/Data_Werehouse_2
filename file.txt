@@ -1,0 +1,2 @@
+cust_key;sale_date;sale_amount
+7;03-09-2021;45.0

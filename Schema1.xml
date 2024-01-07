@@ -1,0 +1,24 @@
+<Schema name="SalesSchema">
+  <Dimension type="StandardDimension" visible="true" name="Product">
+    <Hierarchy name="Product" visible="true" hasAll="true" allMemberName="Semua Product" primaryKey="ProductID">
+      <Table name="product" alias="">
+      </Table>
+      <Level name="Fuel Type" visible="true" column="Fuel_Type" nameColumn="Fuel_Type" ordinalColumn="Fuel_Type" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Product name" visible="true" column="Model" nameColumn="Model" ordinalColumn="Model" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Sales" visible="true" description="Cube sales" cache="true" enabled="true">
+    <Table name="sales" alias="">
+    </Table>
+    <DimensionUsage source="Product" name="Product" visible="true" foreignKey="ProductID">
+    </DimensionUsage>
+    <Measure name="Amount" column="Amount" formatString="#,###" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Price" column="Price" formatString="Rp#,###" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Total Price" column="TotalPrice" formatString="Rp#,###" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
